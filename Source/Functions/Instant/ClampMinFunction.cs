@@ -6,7 +6,7 @@
         {
         }
 
-        public static ClampMinFunction Create(int minScalar)
+        public static ClampMinFunction Create(float minScalar)
         {
             return new ClampMinFunction()
                 .AddArgument(minScalar.ToString());

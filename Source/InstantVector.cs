@@ -73,7 +73,7 @@ namespace PromQL
         /// Clamps the sample values of all elements to have an upper limit of max.
         /// </summary>
         /// <returns></returns>
-        public InstantVector ClampMax(int scalar)
+        public InstantVector ClampMax(float scalar)
         {
             actions.Add(ClampMaxFunction.Create(scalar));
             return this;
@@ -83,7 +83,7 @@ namespace PromQL
         /// Clamps the sample values of all elements to have an lower limit of max.
         /// </summary>
         /// <returns></returns>
-        public InstantVector ClampMin(int scalar)
+        public InstantVector ClampMin(float scalar)
         {
             actions.Add(ClampMinFunction.Create(scalar));
             return this;
@@ -100,7 +100,7 @@ namespace PromQL
         }
 
         /// <summary>
-        /// Rounds the sample values of all elements in v down to the nearest integer.
+        /// Rounds the sample values of all elements down to the nearest integer.
         /// </summary>
         /// <returns></returns>
         public InstantVector Floor()

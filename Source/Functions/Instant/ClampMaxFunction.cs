@@ -6,7 +6,7 @@
         {
         }
 
-        public static ClampMaxFunction Create(int maxScalar)
+        public static ClampMaxFunction Create(float maxScalar)
         {
             return new ClampMaxFunction()
                 .AddArgument(maxScalar.ToString());
