@@ -187,6 +187,17 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Calculates the per-second average rate of increase of the time series in the range vector. Breaks in monotonicity (such as counter resets due to target restarts) are automatically adjusted for. Also, the calculation extrapolates to the ends of the time range, allowing for missed scrapes or imperfect alignment of scrape cycles with the range's time period.
+        /// Rate should only be used with counters. It is best suited for alerting, and for graphing of slow-moving counters.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector Rate()
+        {
+            actions.Add(RateFunction.Create());
+            return InstantVector.WithName(this);
+        }
+
+        /// <summary>
         /// The population standard deviation of the values in the specified interval.
         /// </summary>
         /// <returns></returns>
