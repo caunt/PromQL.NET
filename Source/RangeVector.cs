@@ -89,6 +89,16 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Calculates the difference between the first and last value of each time series element in a range vector v, returning an instant vector with the given deltas and equivalent labels. The delta is extrapolated to cover the full time range as specified in the range vector selector, so that it is possible to get a non-integer result even if the sample values are all integers.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector Delta()
+        {
+            actions.Add(DeltaFunction.Create());
+            return InstantVector.WithName(this);
+        }
+
+        /// <summary>
         /// The maximum value of all points in the specified interval.
         /// </summary>
         /// <returns></returns>
