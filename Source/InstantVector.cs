@@ -100,6 +100,16 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Calculates the decimal logarithm for all elements.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector DecimalLogarithm()
+        {
+            actions.Add(DecimalLogarithmFunction.Create());
+            return this;
+        }
+
+        /// <summary>
         /// Calculates the exponential function for all elements.
         /// </summary>
         /// <returns></returns>
