@@ -60,6 +60,16 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Calculates the binary logarithm for all elements.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector BinaryLogarithm()
+        {
+            actions.Add(BinaryLogarithmFunction.Create());
+            return this;
+        }
+
+        /// <summary>
         /// Rounds the sample values of all elements up to the nearest integer.
         /// </summary>
         /// <returns></returns>
