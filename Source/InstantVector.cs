@@ -140,6 +140,16 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Given a single-element input vector, scalar(v instant-vector) returns the sample value of that single element as a scalar. If the input vector does not have exactly one element, scalar will return NaN.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector Scalar()
+        {
+            actions.Add(ScalarFunction.Create());
+            return this;
+        }
+
+        /// <summary>
         /// Returns vector elements sorted by their sample values, in ascending order.
         /// </summary>
         /// <returns></returns>
