@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace PromQL.Functions.Range
+﻿namespace PromQL.Functions.Range.Aggregations
 {
     public class SumOverTimeFunction : BaseOverTimeFunction
     {

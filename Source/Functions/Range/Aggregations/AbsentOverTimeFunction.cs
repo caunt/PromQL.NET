@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PromQL.Functions.Range
+﻿namespace PromQL.Functions.Range.Aggregations
 {
     public class AbsentOverTimeFunction : BaseOverTimeFunction
     {

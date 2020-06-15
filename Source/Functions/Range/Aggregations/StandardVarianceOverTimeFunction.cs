@@ -1,4 +1,4 @@
-﻿namespace PromQL.Functions.Range
+﻿namespace PromQL.Functions.Range.Aggregations
 {
     public class StandardVarianceOverTimeFunction : BaseOverTimeFunction
     {
