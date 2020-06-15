@@ -176,6 +176,17 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Predicts the value of time series from now, based on the range vector, using simple linear regression.
+        /// PredictLinear should only be used with gauges.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector PredictLinear(float seconds)
+        {
+            actions.Add(PredictLinearFunction.Create(seconds));
+            return InstantVector.WithName(this);
+        }
+
+        /// <summary>
         /// The population standard deviation of the values in the specified interval.
         /// </summary>
         /// <returns></returns>
