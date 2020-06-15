@@ -34,12 +34,28 @@
       net472;
       net48;
     </TargetFrameworks>
-    <Version>0.1</Version>
+    <Version>0.1.1</Version>
     <AddSyntheticProjectReferencesForSolutionDependencies>false</AddSyntheticProjectReferencesForSolutionDependencies>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Authors>caunt</Authors>
+    <Description>.NET implementation of generating queries in Prometheus Query Language</Description>
+    <PackageTags>PromQL;prometheus.io;prometheus query language</PackageTags>
+    <RepositoryUrl>https://github.com/caunt/PromQL.NET</RepositoryUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReleaseNotes>Pre-release.</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/caunt/PromQL.NET</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>../Build/</OutputPath>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\Assets\icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
