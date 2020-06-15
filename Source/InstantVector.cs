@@ -170,6 +170,16 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Calculates the square root of all elements.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector Sqrt()
+        {
+            actions.Add(SqrtFunction.Create());
+            return this;
+        }
+
+        /// <summary>
         /// Calculate sum over dimensions
         /// </summary>
         /// <returns></returns>
@@ -187,6 +197,16 @@ namespace PromQL
         public InstantVector SumWithFilter(LabelFilter filter)
         {
             actions.Add(SumOperator.Create().WithFilter(filter));
+            return this;
+        }
+
+        /// <summary>
+        /// Returns the timestamp of each of the samples of the given vector as the number of seconds since January 1, 1970 UTC.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector Timestamp()
+        {
+            actions.Add(TimestampFunction.Create());
             return this;
         }
 
