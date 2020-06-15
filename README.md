@@ -2,6 +2,7 @@
 
 [![NuGet version (PromQL.NET)](https://img.shields.io/nuget/v/PromQL.NET.svg?style=flat-square)](https://www.nuget.org/packages/PromQL.NET/)
 
+
 **PromQL has two basic types of data on which you can select and aggregate time series data in real time.
 also PromQL has Scalar and String types but here you should not worry about it as PromQL.NET makes it working on its own
 so you have InstantVector and RangeVector to go, enjoy :)**
