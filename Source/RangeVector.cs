@@ -122,6 +122,17 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Calculates the difference between the last two samples in the range vector v, returning an instant vector with the given deltas and equivalent labels.
+        /// InstantDelta should only be used with gauges.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector InstantDelta()
+        {
+            actions.Add(InstantDeltaFunction.Create());
+            return InstantVector.WithName(this);
+        }
+
+        /// <summary>
         /// The maximum value of all points in the specified interval.
         /// </summary>
         /// <returns></returns>
