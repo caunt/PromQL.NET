@@ -109,6 +109,19 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Produces a smoothed value for time series based on the range.
+        /// The lower the smoothing factor sf, the more importance is given to old data.
+        /// The higher the trend factor tf, the more trends in the data is considered. Both sf and tf must be between 0 and 1.
+        /// HoltWinters should only be used with gauges.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector HoltWinters(float sf, float tf)
+        {
+            actions.Add(HoltWintersFunction.Create(sf, tf));
+            return InstantVector.WithName(this);
+        }
+
+        /// <summary>
         /// The maximum value of all points in the specified interval.
         /// </summary>
         /// <returns></returns>

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace PromQL.Functions
@@ -13,6 +14,11 @@ namespace PromQL.Functions
             this.function = function;
 
             arguments = new List<string>(3);
+        }
+
+        public T AddArgument(float argument)
+        {
+            return AddArgument(Convert.ToString(argument));
         }
 
         public T AddArgument(string argument)
