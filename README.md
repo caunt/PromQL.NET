@@ -11,8 +11,8 @@ so you have InstantVector and RangeVector to go, enjoy :)**
 Create InstantVector and apply "sum" aggregation operator on it: https://prometheus.io/docs/prometheus/latest/querying/operators/#aggregation-operators
 ```csharp
 var query = InstantVector
-	.WithName("http_requests_total")
-	.Sum();
+    .WithName("http_requests_total")
+    .Sum();
 
 Console.WriteLine($"sum http_requests_total:\n\t{query}\n");
 ```
@@ -20,13 +20,13 @@ Console.WriteLine($"sum http_requests_total:\n\t{query}\n");
 For now were using RangeVector instead of InstantVector, selecting http requests count per instance, and sorting it in descending order
 ```csharp
 var query = RangeVector
-	.Create("http_requests_total", duration: 15, unit: 'm')
-	.SumOverTime()      // Same "sum" aggregation operator as in InstantVector, but applies to RangeVector and returns as result InstantVector (!) instead of RangeVector
-	.SumWithFilter(     // you shouldn't worry about types verification after applying operators and functions because IntelliSense wont give you wrong hints
-		LabelFilter.Create()
-			.WithType(LabelFilterType.By)
-			.AddField("instance"))
-	.SortDescending();
+    .Create("http_requests_total", duration: 15, unit: 'm')
+    .SumOverTime()      // Same "sum" aggregation operator as in InstantVector, but applies to RangeVector and returns as result InstantVector (!) instead of RangeVector
+    .SumWithFilter(     // you shouldn't worry about types verification after applying operators and functions because IntelliSense wont give you wrong hints
+        LabelFilter.Create()
+            .WithType(LabelFilterType.By)
+            .AddField("instance"))
+    .SortDescending();
 
 Console.WriteLine($"sum http_requests_total of 15 minutes:\n\t{query}");
 ```
