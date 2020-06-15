@@ -45,6 +45,7 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageReleaseNotes>Pre-release.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/caunt/PromQL.NET</PackageProjectUrl>
+    <RootNamespace>PromQL</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

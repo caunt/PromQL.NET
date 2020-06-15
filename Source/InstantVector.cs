@@ -15,8 +15,7 @@ namespace PromQL
 
         private InstantVector(string source)
         {
-            this.name = source;
-
+            name = source;
             actions = new List<IVectorAction>();
         }
 
@@ -77,6 +76,16 @@ namespace PromQL
         public InstantVector ClampMax(int scalar)
         {
             actions.Add(ClampMaxFunction.Create(scalar));
+            return this;
+        }
+
+        /// <summary>
+        /// Clamps the sample values of all elements to have an lower limit of max.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector ClampMin(int scalar)
+        {
+            actions.Add(ClampMinFunction.Create(scalar));
             return this;
         }
 
