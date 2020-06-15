@@ -198,6 +198,17 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Returns the number of counter resets within the provided time range as an instant vector. Any decrease in the value between two consecutive samples is interpreted as a counter reset.
+        /// Resets should only be used with counters.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector Resets()
+        {
+            actions.Add(ResetsFunction.Create());
+            return InstantVector.WithName(this);
+        }
+
+        /// <summary>
         /// The population standard deviation of the values in the specified interval.
         /// </summary>
         /// <returns></returns>
