@@ -145,6 +145,17 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Calculates the per-second instant rate of increase of the time series in the range vector. This is based on the last two data points. Breaks in monotonicity (such as counter resets due to target restarts) are automatically adjusted for.
+        /// InstantRate should only be used when graphing volatile, fast-moving counters. Use rate for alerts and slow-moving counters, as brief changes in the rate can reset the FOR clause and graphs consisting entirely of rare spikes are hard to read.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector InstantRate()
+        {
+            actions.Add(InstantRateFunction.Create());
+            return InstantVector.WithName(this);
+        }
+
+        /// <summary>
         /// The maximum value of all points in the specified interval.
         /// </summary>
         /// <returns></returns>
