@@ -90,6 +90,16 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Calculates the exponential function for all elements.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector Exponential()
+        {
+            actions.Add(ExponentialFunction.Create());
+            return this;
+        }
+
+        /// <summary>
         /// Returns vector elements sorted by their sample values, in ascending order.
         /// </summary>
         /// <returns></returns>
