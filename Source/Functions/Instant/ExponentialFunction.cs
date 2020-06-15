@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PromQL.Functions.Instant
+﻿namespace PromQL.Functions.Instant
 {
     public class ExponentialFunction : BaseFunction<AbsoluteFunction>
     {

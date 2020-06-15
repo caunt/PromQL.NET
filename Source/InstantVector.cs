@@ -100,6 +100,16 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Rounds the sample values of all elements in v down to the nearest integer.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector Floor()
+        {
+            actions.Add(FloorFunction.Create());
+            return this;
+        }
+
+        /// <summary>
         /// Returns vector elements sorted by their sample values, in ascending order.
         /// </summary>
         /// <returns></returns>
