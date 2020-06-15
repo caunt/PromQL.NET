@@ -110,6 +110,16 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Calculates the natural logarithm for all elements.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector NaturalLogarithm()
+        {
+            actions.Add(NaturalLogarithmFunction.Create());
+            return this;
+        }
+
+        /// <summary>
         /// Returns vector elements sorted by their sample values, in ascending order.
         /// </summary>
         /// <returns></returns>

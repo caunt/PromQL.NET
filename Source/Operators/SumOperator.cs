@@ -1,6 +1,4 @@
 ﻿using PromQL.Operators.Filters;
-using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace PromQL.Operators
