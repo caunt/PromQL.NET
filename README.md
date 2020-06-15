@@ -18,7 +18,7 @@ Console.WriteLine(query);
 // OUTPUT: sum(http_requests_total)
 ```
 ### Example #2:
-For now were using RangeVector instead of InstantVector, selecting http requests count per instance, and sorting it in descending order
+For now were using RangeVector instead of InstantVector, selecting http requests count per instance, and sorting it in descending order:
 ```csharp
 var query = RangeVector
     .Create("http_requests_total", duration: 15, unit: 'm')
@@ -34,5 +34,6 @@ Console.WriteLine(query);
 ```
 
 
-As you can see in Example #2 PromQL.NET will preserve right hints about accessible methods on your aggregated data
-our goal is to make everything works as expected, and prevent wrong syntax in generated queries
+As you can see in Example #2 PromQL.NET will preserve right hints about accessible methods on your aggregated data.
+
+Our goal is to make everything works as expected, and prevent wrong syntax in generated queries.
