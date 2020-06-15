@@ -99,6 +99,16 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Calculates the per-second derivative of the time series in a range vector v, using simple linear regression.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector Derivative()
+        {
+            actions.Add(DerivativeFunction.Create());
+            return InstantVector.WithName(this);
+        }
+
+        /// <summary>
         /// The maximum value of all points in the specified interval.
         /// </summary>
         /// <returns></returns>
