@@ -14,7 +14,8 @@ var query = InstantVector
     .WithName("http_requests_total")
     .Sum();
 
-Console.WriteLine($"sum http_requests_total:\n\t{query}\n");
+Console.WriteLine(query);
+// OUTPUT: sum(http_requests_total)
 ```
 ### Example #2:
 For now were using RangeVector instead of InstantVector, selecting http requests count per instance, and sorting it in descending order
@@ -28,7 +29,8 @@ var query = RangeVector
             .AddField("instance"))
     .SortDescending();
 
-Console.WriteLine($"sum http_requests_total of 15 minutes:\n\t{query}");
+Console.WriteLine(query);
+// OUTPUT: sort_desc(sum by (instance) (sum_over_time(http_requests_total[15m])))
 ```
 
 
