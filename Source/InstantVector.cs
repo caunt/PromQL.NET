@@ -237,6 +237,16 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Rounds the sample values of all elements to the nearest integer. Ties are resolved by rounding up. The optional to_nearest argument allows specifying the nearest multiple to which the sample values should be rounded. This multiple may also be a fraction.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector Round(bool toNearest = true)
+        {
+            actions.Add(RoundFunction.Create(toNearest));
+            return this;
+        }
+
+        /// <summary>
         /// Given a single-element input vector, scalar(v instant-vector) returns the sample value of that single element as a scalar. If the input vector does not have exactly one element, scalar will return NaN.
         /// </summary>
         /// <returns></returns>
