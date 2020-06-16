@@ -245,6 +245,18 @@ namespace PromQL
 
         #region Hide System.Object inherited methods
 
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public static new bool Equals(object objA, object objB)
+        {
+            return object.Equals(objA, objB);
+        }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public static new bool ReferenceEquals(object objA, object objB)
+        {
+            return object.ReferenceEquals(objA, objB);
+        }
+
         /// <summary>
         /// Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
         /// </summary>

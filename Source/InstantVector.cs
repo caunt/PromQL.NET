@@ -36,13 +36,9 @@ namespace PromQL
             return builder.ToString().ToLower();
         }
 
-        /// <summary>
-        /// Returns the number of seconds since January 1, 1970 UTC. Note that this does not actually return the current time, but the time at which the expression is to be evaluated.
-        /// </summary>
-        /// <returns></returns>
-        public static InstantVector Time()
+        public static InstantVector WithName(string name)
         {
-            return Empty().AddFunction(TimeFunction.Create());
+            return new InstantVector(name);
         }
 
         /// <summary>
@@ -50,14 +46,18 @@ namespace PromQL
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static InstantVector Vector(float value)
+        public static InstantVector WithScalar(float value)
         {
             return Empty().AddFunction(VectorFunction.Create(value));
         }
 
-        public static InstantVector WithName(string name)
+        /// <summary>
+        /// Returns the number of seconds since January 1, 1970 UTC. Note that this does not actually return the current time, but the time at which the expression is to be evaluated.
+        /// </summary>
+        /// <returns></returns>
+        public static InstantVector WithTime()
         {
-            return new InstantVector(name);
+            return Empty().AddFunction(TimeFunction.Create());
         }
 
         /// <summary>
@@ -364,6 +364,18 @@ namespace PromQL
         }
 
         #region Hide System.Object inherited methods
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public static new bool Equals(object objA, object objB)
+        {
+            return object.Equals(objA, objB);
+        }
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public static new bool ReferenceEquals(object objA, object objB)
+        {
+            return object.ReferenceEquals(objA, objB);
+        }
 
         /// <summary>
         /// Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
