@@ -171,6 +171,16 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Returns the minute of the hour for each of the given times in UTC. Returned values are from 0 to 59.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector Minute()
+        {
+            actions.Add(MinuteFunction.Create());
+            return this;
+        }
+
+        /// <summary>
         /// Calculates the natural logarithm for all elements.
         /// </summary>
         /// <returns></returns>
