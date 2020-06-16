@@ -20,6 +20,11 @@ namespace PromQL
             actions = new List<IVectorAction>();
         }
 
+        public static InstantVector Empty()
+        {
+            return new InstantVector("");
+        }
+
         public static implicit operator string(InstantVector vector)
         {
             var builder = new StringBuilder(vector.name);
@@ -28,6 +33,11 @@ namespace PromQL
                 action.Apply(builder);
 
             return builder.ToString().ToLower();
+        }
+
+        public static InstantVector Time()
+        {
+            return Empty().AddFunction(TimeFunction.Create());
         }
 
         public static InstantVector WithName(string name)
@@ -51,6 +61,12 @@ namespace PromQL
         public InstantVector Absolute()
         {
             actions.Add(AbsoluteFunction.Create());
+            return this;
+        }
+
+        public InstantVector AddFunction(IVectorAction action)
+        {
+            actions.Add(action);
             return this;
         }
 

@@ -20,7 +20,8 @@ namespace PromQL.Functions
 
         public T AddArgument(float argument)
         {
-            return AddArgument(Convert.ToString(argument));
+            arguments.Add(Convert.ToString(argument));
+            return this as T;
         }
 
         public T AddArgument(string argument)
@@ -31,7 +32,8 @@ namespace PromQL.Functions
 
         public T AddPreArgument(float argument)
         {
-            return AddPreArgument(Convert.ToString(argument));
+            preArguments.Add(Convert.ToString(argument));
+            return this as T;
         }
 
         public T AddPreArgument(string argument)
