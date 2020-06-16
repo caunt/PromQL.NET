@@ -161,6 +161,16 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Calculates the φ-quantile (0 ≤ φ ≤ 1) from the buckets b of a histogram. (See histograms and summaries for a detailed explanation of φ-quantiles and the usage of the histogram metric type in general.) The samples in b are the counts of observations in each bucket. Each sample must have a label le where the label value denotes the inclusive upper bound of the bucket. (Samples without such a label are silently ignored.) The histogram metric type automatically provides time series with the _bucket suffix and the appropriate labels.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector HistogramQuantile(float quantile)
+        {
+            actions.Add(HistogramQuantileFunction.Create(quantile));
+            return this;
+        }
+
+        /// <summary>
         /// Returns the hour of the day for each of the given times in UTC. Returned values are from 0 to 23.
         /// </summary>
         /// <returns></returns>
