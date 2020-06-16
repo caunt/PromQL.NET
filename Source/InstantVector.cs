@@ -121,6 +121,16 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Returns number of days in the month for each of the given times in UTC. Returned values are from 28 to 31.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector DaysInMonth()
+        {
+            actions.Add(DaysInMonthFunction.Create());
+            return this;
+        }
+
+        /// <summary>
         /// Calculates the decimal logarithm for all elements.
         /// </summary>
         /// <returns></returns>
