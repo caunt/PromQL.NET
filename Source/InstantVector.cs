@@ -181,6 +181,16 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Returns the month of the year for each of the given times in UTC. Returned values are from 1 to 12, where 1 means January etc.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector Month()
+        {
+            actions.Add(MonthFunction.Create());
+            return this;
+        }
+
+        /// <summary>
         /// Calculates the natural logarithm for all elements.
         /// </summary>
         /// <returns></returns>
