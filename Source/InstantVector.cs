@@ -161,6 +161,16 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Returns the hour of the day for each of the given times in UTC. Returned values are from 0 to 23.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector Hour()
+        {
+            actions.Add(HourFunction.Create());
+            return this;
+        }
+
+        /// <summary>
         /// Calculates the natural logarithm for all elements.
         /// </summary>
         /// <returns></returns>
