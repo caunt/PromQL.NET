@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using PromQL.Functions.Instant.Time;
 
 namespace PromQL
 {
@@ -96,6 +97,16 @@ namespace PromQL
         public InstantVector ClampMin(float scalar)
         {
             actions.Add(ClampMinFunction.Create(scalar));
+            return this;
+        }
+
+        /// <summary>
+        /// Rreturns the day of the month for each of the given times in UTC. Returned values are from 1 to 31.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector DayOfMonth()
+        {
+            actions.Add(DayOfMonthFunction.Create());
             return this;
         }
 
