@@ -6,7 +6,7 @@ namespace PromQL.Functions
 {
     public abstract class BaseFunction<T> : IVectorAction where T : BaseFunction<T>
     {
-        private List<string> arguments;
+        protected List<string> arguments;
         private string function;
 
         internal BaseFunction(string function)
@@ -23,12 +23,14 @@ namespace PromQL.Functions
 
         public T AddArgument(string argument)
         {
-            arguments.Add(argument);
+            arguments.Add('"' + argument + '"');
             return this as T;
         }
 
         public void Apply(StringBuilder source)
         {
+            BeforeApply();
+
             source.Insert(0, function);
             source.Insert(function.Length, '(');
 
@@ -39,6 +41,10 @@ namespace PromQL.Functions
             }
 
             source.Append(')');
+        }
+
+        protected virtual void BeforeApply()
+        {
         }
     }
 }

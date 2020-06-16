@@ -171,6 +171,22 @@ namespace PromQL
         }
 
         /// <summary>
+        /// Returns the input vector with all sample values converted to their absolute value.
+        /// </summary>
+        public InstantVector LabelJoin(string destinationLabel, string separator, params string[] sourceLabels)
+        {
+            var function = LabelJoinFunction
+                .Create(destinationLabel)
+                .WithSeparator(separator);
+
+            foreach (var label in sourceLabels)
+                function.AddLabel(label);
+
+            actions.Add(function);
+            return this;
+        }
+
+        /// <summary>
         /// Returns the minute of the hour for each of the given times in UTC. Returned values are from 0 to 59.
         /// </summary>
         /// <returns></returns>
