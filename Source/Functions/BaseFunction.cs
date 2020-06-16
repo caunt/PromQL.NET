@@ -13,7 +13,7 @@ namespace PromQL.Functions
         {
             this.function = function;
 
-            arguments = new List<string>(3);
+            arguments = new List<string>(2);
         }
 
         public T AddArgument(float argument)

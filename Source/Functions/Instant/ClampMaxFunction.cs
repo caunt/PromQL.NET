@@ -9,7 +9,7 @@
         public static ClampMaxFunction Create(float maxScalar)
         {
             return new ClampMaxFunction()
-                .AddArgument(maxScalar.ToString());
+                .AddArgument(maxScalar);
         }
     }
 }
