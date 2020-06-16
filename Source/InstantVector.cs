@@ -101,12 +101,22 @@ namespace PromQL
         }
 
         /// <summary>
-        /// Rreturns the day of the month for each of the given times in UTC. Returned values are from 1 to 31.
+        /// Returns the day of the month for each of the given times in UTC. Returned values are from 1 to 31.
         /// </summary>
         /// <returns></returns>
         public InstantVector DayOfMonth()
         {
             actions.Add(DayOfMonthFunction.Create());
+            return this;
+        }
+
+        /// <summary>
+        /// Returns the day of the week for each of the given times in UTC. Returned values are from 0 to 6, where 0 means Sunday etc.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector DayOfWeek()
+        {
+            actions.Add(DayOfWeekFunction.Create());
             return this;
         }
 
