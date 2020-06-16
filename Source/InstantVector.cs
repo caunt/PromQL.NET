@@ -276,6 +276,16 @@ namespace PromQL
             return this;
         }
 
+        /// <summary>
+        /// Returns the year for each of the given times in UTC.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector Year()
+        {
+            actions.Add(YearFunction.Create());
+            return this;
+        }
+
         #region Hide System.Object inherited methods
 
         /// <summary>
