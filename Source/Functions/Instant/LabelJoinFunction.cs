@@ -1,4 +1,6 @@
-﻿namespace PromQL.Functions.Instant
+﻿using System.Text;
+
+namespace PromQL.Functions.Instant
 {
     internal class LabelJoinFunction : BaseFunction<LabelJoinFunction>
     {
@@ -31,7 +33,7 @@
             return this;
         }
 
-        protected override void BeforeApply()
+        protected override void BeforeApply(StringBuilder source)
         {
             if (arguments.Count == 1)
                 AddArgument(defaultSeparator);

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using PromQL.Functions.Instant.Time;
+using PromQL.Functions.Instant.Static;
 
 namespace PromQL
 {
@@ -35,9 +36,23 @@ namespace PromQL
             return builder.ToString().ToLower();
         }
 
+        /// <summary>
+        /// Returns the number of seconds since January 1, 1970 UTC. Note that this does not actually return the current time, but the time at which the expression is to be evaluated.
+        /// </summary>
+        /// <returns></returns>
         public static InstantVector Time()
         {
             return Empty().AddFunction(TimeFunction.Create());
+        }
+
+        /// <summary>
+        /// Returns the scalar s as a vector with no labels.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static InstantVector Vector(float value)
+        {
+            return Empty().AddFunction(VectorFunction.Create(value));
         }
 
         public static InstantVector WithName(string name)

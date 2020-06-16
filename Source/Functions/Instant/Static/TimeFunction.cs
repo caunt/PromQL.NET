@@ -1,4 +1,4 @@
-﻿namespace PromQL.Functions.Instant
+﻿namespace PromQL.Functions.Instant.Static
 {
     public class TimeFunction : BaseFunction<TimeFunction>
     {

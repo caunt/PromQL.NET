@@ -44,7 +44,7 @@ namespace PromQL.Functions
 
         public void Apply(StringBuilder source)
         {
-            BeforeApply();
+            BeforeApply(source);
 
             var offset = function.Length;
 
@@ -69,7 +69,7 @@ namespace PromQL.Functions
             source.Append(')');
         }
 
-        protected virtual void BeforeApply()
+        protected virtual void BeforeApply(StringBuilder source)
         {
         }
     }
