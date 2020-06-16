@@ -187,6 +187,16 @@ namespace PromQL
         }
 
         /// <summary>
+        /// For each timeseries, label_replace(v instant-vector, dst_label string, replacement string, src_label string, regex string) matches the regular expression regex against the label src_label. If it matches, then the timeseries is returned with the label dst_label replaced by the expansion of replacement. $1 is replaced with the first matching subgroup, $2 with the second etc. If the regular expression doesn't match then the timeseries is returned unchanged.
+        /// </summary>
+        /// <returns></returns>
+        public InstantVector LabelReplace(string destinationLabel, string replacement, string sourceLabel, string regex)
+        {
+            actions.Add(LabelReplaceFunction.Create(destinationLabel, replacement, sourceLabel, regex));
+            return this;
+        }
+
+        /// <summary>
         /// Returns the minute of the hour for each of the given times in UTC. Returned values are from 0 to 59.
         /// </summary>
         /// <returns></returns>
