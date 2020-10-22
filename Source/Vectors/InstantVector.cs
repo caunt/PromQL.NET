@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using PromQL.Functions.Instant.Static;
-using PromQL.Linq;
-using PromQL.Operators;
 
 namespace PromQL.Vectors
 {

@@ -34,7 +34,7 @@
       net472;
       net48;
     </TargetFrameworks>
-    <Version>0.3</Version>
+    <Version>0.4</Version>
     <AddSyntheticProjectReferencesForSolutionDependencies>false</AddSyntheticProjectReferencesForSolutionDependencies>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -43,9 +43,10 @@
     <PackageTags>PromQL;prometheus.io;prometheus query language</PackageTags>
     <RepositoryUrl>https://github.com/caunt/PromQL.NET</RepositoryUrl>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageReleaseNotes>Pre-release.</PackageReleaseNotes>
+    <PackageReleaseNotes>Still pre-release.</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/caunt/PromQL.NET</PackageProjectUrl>
     <RootNamespace>PromQL</RootNamespace>
+    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

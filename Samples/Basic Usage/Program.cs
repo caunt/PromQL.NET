@@ -1,6 +1,7 @@
 ﻿using System;
 using PromQL.Vectors;
 using PromQL.Operators.Filters;
+using PromQL;
 
 namespace Basic_Usage
 {
@@ -22,7 +23,7 @@ namespace Basic_Usage
             // Example #2:
             // For now were using RangeVector instead of InstantVector, selecting http requests count per instance, and sorting it in descending order
             query = RangeVector
-                .WithString("http_requests_total", duration: 15, unit: 'm')
+                .WithString("http_requests_total", TimeSpan.FromSeconds(15))
                 .SumOverTime()  // Same "sum" aggregation operator as in InstantVector, but applies over time on RangeVector and returns as result InstantVector (!) instead of RangeVector
                 .SumWithFilter(
                     LabelFilter.Create()
@@ -30,7 +31,7 @@ namespace Basic_Usage
                         .AddField("instance"))
                 .SortDescending();
 
-            Console.WriteLine($"sum http_requests_total of 15 minutes:\n\t{query}");
+            Console.WriteLine($"sum http_requests_total of 15 seconds:\n\t{query}");
         }
     }
 }
