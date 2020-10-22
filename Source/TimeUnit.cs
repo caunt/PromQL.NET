@@ -21,7 +21,7 @@ namespace PromQL
 
         public static implicit operator string(TimeUnit unit)
         {
-            return unit.value;
+            return unit?.value;
         }
 
         public static implicit operator TimeUnit(string value)
