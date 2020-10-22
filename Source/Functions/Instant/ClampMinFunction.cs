@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Instant
 {
-    public class ClampMinFunction : BaseFunction<ClampMinFunction>
+    internal class ClampMinFunction : BaseFunction<ClampMinFunction>
     {
         private ClampMinFunction() : base("clamp_min")
         {

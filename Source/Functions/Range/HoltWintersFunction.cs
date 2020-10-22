@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Range
 {
-    public class HoltWintersFunction : BaseFunction<HoltWintersFunction>
+    internal class HoltWintersFunction : BaseFunction<HoltWintersFunction>
     {
         private HoltWintersFunction() : base("delta")
         {

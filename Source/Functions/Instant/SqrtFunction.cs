@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Instant
 {
-    public class SqrtFunction : BaseFunction<SqrtFunction>
+    internal class SqrtFunction : BaseFunction<SqrtFunction>
     {
         private SqrtFunction() : base("sqrt")
         {

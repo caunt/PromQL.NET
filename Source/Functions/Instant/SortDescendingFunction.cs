@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Instant
 {
-    public class SortDescendingFunction : BaseFunction<SortDescendingFunction>
+    internal class SortDescendingFunction : BaseFunction<SortDescendingFunction>
     {
         private SortDescendingFunction() : base("sort_desc")
         {

@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Instant
 {
-    public class ScalarFunction : BaseFunction<ScalarFunction>
+    internal class ScalarFunction : BaseFunction<ScalarFunction>
     {
         private ScalarFunction() : base("scalar")
         {

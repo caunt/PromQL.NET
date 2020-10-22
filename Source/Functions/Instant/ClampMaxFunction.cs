@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Instant
 {
-    public class ClampMaxFunction : BaseFunction<ClampMaxFunction>
+    internal class ClampMaxFunction : BaseFunction<ClampMaxFunction>
     {
         private ClampMaxFunction() : base("clamp_max")
         {

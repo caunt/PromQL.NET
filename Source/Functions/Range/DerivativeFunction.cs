@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Range
 {
-    public class DerivativeFunction : BaseFunction<DerivativeFunction>
+    internal class DerivativeFunction : BaseFunction<DerivativeFunction>
     {
         private DerivativeFunction() : base("deriv")
         {

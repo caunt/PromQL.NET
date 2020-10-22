@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Instant
 {
-    public class DecimalLogarithmFunction : BaseFunction<DecimalLogarithmFunction>
+    internal class DecimalLogarithmFunction : BaseFunction<DecimalLogarithmFunction>
     {
         private DecimalLogarithmFunction() : base("log10")
         {

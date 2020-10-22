@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Range.Aggregations
 {
-    public class CountOverTimeFunction : BaseOverTimeFunction
+    internal class CountOverTimeFunction : BaseOverTimeFunction
     {
         private CountOverTimeFunction() : base("count")
         {

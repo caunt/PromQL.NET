@@ -2,7 +2,7 @@
 
 namespace PromQL.Functions.Instant.Static
 {
-    public class VectorFunction : BaseFunction<VectorFunction>
+    internal class VectorFunction : BaseFunction<VectorFunction>
     {
         private float scalar;
 

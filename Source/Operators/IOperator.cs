@@ -1,9 +1,9 @@
-﻿using PromQL.Operators.Filters;
-using System.Text;
+﻿using PromQL.Linq;
+using PromQL.Operators.Filters;
 
 namespace PromQL.Operators
 {
-    public interface IOperator : IVectorAction
+    internal interface IOperator : IVectorAction
     {
         SumOperator WithFilter(LabelFilter filter);
     }

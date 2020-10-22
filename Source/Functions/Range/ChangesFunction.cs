@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Range
 {
-    public class ChangesFunction : BaseFunction<ChangesFunction>
+    internal class ChangesFunction : BaseFunction<ChangesFunction>
     {
         private ChangesFunction() : base("changes")
         {

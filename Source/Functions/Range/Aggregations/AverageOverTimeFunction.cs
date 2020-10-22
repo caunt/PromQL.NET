@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Range.Aggregations
 {
-    public class AverageOverTimeFunction : BaseOverTimeFunction
+    internal class AverageOverTimeFunction : BaseOverTimeFunction
     {
         private AverageOverTimeFunction() : base("avg")
         {

@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Instant
 {
-    public class FloorFunction : BaseFunction<FloorFunction>
+    internal class FloorFunction : BaseFunction<FloorFunction>
     {
         private FloorFunction() : base("floor")
         {

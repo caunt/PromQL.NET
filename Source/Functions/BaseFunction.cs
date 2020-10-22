@@ -1,10 +1,12 @@
-﻿using System;
+﻿using PromQL.Linq;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace PromQL.Functions
 {
-    public abstract class BaseFunction<T> : IVectorAction where T : BaseFunction<T>
+    internal abstract class BaseFunction<T> : IVectorAction where T : BaseFunction<T>
     {
         protected List<string> arguments;
         protected List<string> preArguments;
@@ -20,7 +22,7 @@ namespace PromQL.Functions
 
         public T AddArgument(float argument)
         {
-            arguments.Add(Convert.ToString(argument));
+            arguments.Add(Convert.ToString(argument, CultureInfo.InvariantCulture));
             return this as T;
         }
 
@@ -32,7 +34,7 @@ namespace PromQL.Functions
 
         public T AddPreArgument(float argument)
         {
-            preArguments.Add(Convert.ToString(argument));
+            preArguments.Add(Convert.ToString(argument, CultureInfo.InvariantCulture));
             return this as T;
         }
 

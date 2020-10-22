@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Instant
 {
-    public class BinaryLogarithmFunction : BaseFunction<NaturalLogarithmFunction>
+    internal class BinaryLogarithmFunction : BaseFunction<NaturalLogarithmFunction>
     {
         private BinaryLogarithmFunction() : base("log2")
         {

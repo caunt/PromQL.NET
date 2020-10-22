@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Range.Aggregations
 {
-    public class StandardVarianceOverTimeFunction : BaseOverTimeFunction
+    internal class StandardVarianceOverTimeFunction : BaseOverTimeFunction
     {
         private StandardVarianceOverTimeFunction() : base("stdvar")
         {

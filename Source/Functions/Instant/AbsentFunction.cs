@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Instant
 {
-    public class AbsentFunction : BaseFunction<AbsentFunction>
+    internal class AbsentFunction : BaseFunction<AbsentFunction>
     {
         private AbsentFunction() : base("absent")
         {

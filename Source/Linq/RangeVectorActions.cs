@@ -1,62 +1,18 @@
 ﻿using PromQL.Functions.Range;
 using PromQL.Functions.Range.Aggregations;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
 
-namespace PromQL
+namespace PromQL.Vectors
 {
-    public class RangeVector
+    public partial class RangeVector
     {
-        private List<IVectorAction> actions;
-        private int duration;
-        private string source;
-        private char unit;
-
-        private RangeVector(string name, int duration, char unit)
-        {
-            this.source = name;
-            this.duration = duration;
-            this.unit = unit;
-
-            actions = new List<IVectorAction>();
-        }
-
-        public static RangeVector Create(string name, int duration, char unit = 'm')
-        {
-            return new RangeVector(name, duration, unit);
-        }
-
-        public static implicit operator string(RangeVector vector)
-        {
-            var builder = new StringBuilder(vector.source);
-            builder.Append('[');
-            builder.Append(vector.duration);
-            builder.Append(vector.unit);
-            builder.Append(']');
-
-            foreach (var action in vector.actions)
-                action.Apply(builder);
-
-            return builder.ToString().ToLower();
-        }
-
         /// <summary>
         /// Returns an empty vector if the range vector passed to it has any elements and a 1-element vector with the value 1 if the range vector passed to it has no elements.
         /// </summary>
         /// <returns></returns>
         public InstantVector AbsentOverTime()
         {
-            actions.Add(AbsentOverTimeFunction.Create());
-            return InstantVector.WithName(this);
-        }
-
-        [Obsolete("Adding actions directly to query is unsafe, please make use of methods in type of InstantVector.")]
-        public InstantVector AddAction(IVectorAction action)
-        {
-            actions.Add(action);
-            return InstantVector.WithName(this);
+            AddAction(AbsentOverTimeFunction.Create());
+            return InstantVector.WithString(this);
         }
 
         /// <summary>
@@ -65,8 +21,8 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector AverageOverTime()
         {
-            actions.Add(AverageOverTimeFunction.Create());
-            return InstantVector.WithName(this);
+            AddAction(AverageOverTimeFunction.Create());
+            return InstantVector.WithString(this);
         }
 
         /// <summary>
@@ -75,8 +31,8 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector Changes()
         {
-            actions.Add(ChangesFunction.Create());
-            return InstantVector.WithName(this);
+            AddAction(ChangesFunction.Create());
+            return InstantVector.WithString(this);
         }
 
         /// <summary>
@@ -85,8 +41,8 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector CountOverTime()
         {
-            actions.Add(CountOverTimeFunction.Create());
-            return InstantVector.WithName(this);
+            AddAction(CountOverTimeFunction.Create());
+            return InstantVector.WithString(this);
         }
 
         /// <summary>
@@ -95,8 +51,8 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector Delta()
         {
-            actions.Add(DeltaFunction.Create());
-            return InstantVector.WithName(this);
+            AddAction(DeltaFunction.Create());
+            return InstantVector.WithString(this);
         }
 
         /// <summary>
@@ -105,8 +61,8 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector Derivative()
         {
-            actions.Add(DerivativeFunction.Create());
-            return InstantVector.WithName(this);
+            AddAction(DerivativeFunction.Create());
+            return InstantVector.WithString(this);
         }
 
         /// <summary>
@@ -118,8 +74,8 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector HoltWinters(float sf, float tf)
         {
-            actions.Add(HoltWintersFunction.Create(sf, tf));
-            return InstantVector.WithName(this);
+            AddAction(HoltWintersFunction.Create(sf, tf));
+            return InstantVector.WithString(this);
         }
 
         /// <summary>
@@ -129,8 +85,8 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector Increase()
         {
-            actions.Add(IncreaseFunction.Create());
-            return InstantVector.WithName(this);
+            AddAction(IncreaseFunction.Create());
+            return InstantVector.WithString(this);
         }
 
         /// <summary>
@@ -140,8 +96,8 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector InstantDelta()
         {
-            actions.Add(InstantDeltaFunction.Create());
-            return InstantVector.WithName(this);
+            AddAction(InstantDeltaFunction.Create());
+            return InstantVector.WithString(this);
         }
 
         /// <summary>
@@ -151,8 +107,8 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector InstantRate()
         {
-            actions.Add(InstantRateFunction.Create());
-            return InstantVector.WithName(this);
+            AddAction(InstantRateFunction.Create());
+            return InstantVector.WithString(this);
         }
 
         /// <summary>
@@ -161,8 +117,8 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector MaxOverTime()
         {
-            actions.Add(MaxOverTimeFunction.Create());
-            return InstantVector.WithName(this);
+            AddAction(MaxOverTimeFunction.Create());
+            return InstantVector.WithString(this);
         }
 
         /// <summary>
@@ -171,8 +127,8 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector MinOverTime()
         {
-            actions.Add(MinOverTimeFunction.Create());
-            return InstantVector.WithName(this);
+            AddAction(MinOverTimeFunction.Create());
+            return InstantVector.WithString(this);
         }
 
         /// <summary>
@@ -182,8 +138,8 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector PredictLinear(float seconds)
         {
-            actions.Add(PredictLinearFunction.Create(seconds));
-            return InstantVector.WithName(this);
+            AddAction(PredictLinearFunction.Create(seconds));
+            return InstantVector.WithString(this);
         }
 
         /// <summary>
@@ -193,8 +149,8 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector Rate()
         {
-            actions.Add(RateFunction.Create());
-            return InstantVector.WithName(this);
+            AddAction(RateFunction.Create());
+            return InstantVector.WithString(this);
         }
 
         /// <summary>
@@ -204,8 +160,8 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector Resets()
         {
-            actions.Add(ResetsFunction.Create());
-            return InstantVector.WithName(this);
+            AddAction(ResetsFunction.Create());
+            return InstantVector.WithString(this);
         }
 
         /// <summary>
@@ -214,8 +170,8 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector StandardDeviationOverTime()
         {
-            actions.Add(StandardDeviationOverTimeFunction.Create());
-            return InstantVector.WithName(this);
+            AddAction(StandardDeviationOverTimeFunction.Create());
+            return InstantVector.WithString(this);
         }
 
         /// <summary>
@@ -224,8 +180,8 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector StandardVarianceOverTime()
         {
-            actions.Add(StandardVarianceOverTimeFunction.Create());
-            return InstantVector.WithName(this);
+            AddAction(StandardVarianceOverTimeFunction.Create());
+            return InstantVector.WithString(this);
         }
 
         /// <summary>
@@ -234,61 +190,8 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector SumOverTime()
         {
-            actions.Add(SumOverTimeFunction.Create());
-            return InstantVector.WithName(this);
+            AddAction(SumOverTimeFunction.Create());
+            return InstantVector.WithString(this);
         }
-
-        public override string ToString()
-        {
-            return this;
-        }
-
-        #region Hide System.Object inherited methods
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public static new bool Equals(object objA, object objB)
-        {
-            return object.Equals(objA, objB);
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public static new bool ReferenceEquals(object objA, object objB)
-        {
-            return object.ReferenceEquals(objA, objB);
-        }
-
-        /// <summary>
-        /// Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
-        /// </summary>
-        /// <returns>
-        /// true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
-        /// </returns>
-        /// <param name="obj">The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>. </param><filterpriority>2</filterpriority>
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object obj)
-        {
-            return base.Equals(obj);
-        }
-
-        /// <summary>
-        /// Serves as a hash function for a particular type.
-        /// </summary>
-        /// <returns>
-        /// A hash code for the current <see cref="T:System.Object"/>.
-        /// </returns>
-        /// <filterpriority>2</filterpriority>
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Type GetType()
-        {
-            return base.GetType();
-        }
-
-        #endregion Hide System.Object inherited methods
     }
 }

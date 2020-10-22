@@ -1,73 +1,19 @@
-﻿using PromQL.Operators;
-using PromQL.Operators.Filters;
-using PromQL.Functions.Instant;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using PromQL.Functions.Instant;
 using PromQL.Functions.Instant.Time;
-using PromQL.Functions.Instant.Static;
+using PromQL.Operators;
+using PromQL.Operators.Filters;
 
-namespace PromQL
+namespace PromQL.Vectors
 {
-    public class InstantVector
+    public partial class InstantVector
     {
-        private List<IVectorAction> actions;
-        private string name;
-
-        private InstantVector(string source)
-        {
-            name = source;
-            actions = new List<IVectorAction>();
-        }
-
-        public static InstantVector Empty()
-        {
-            return new InstantVector("");
-        }
-
-        public static implicit operator string(InstantVector vector)
-        {
-            var builder = new StringBuilder(vector.name);
-
-            foreach (var action in vector.actions)
-                action.Apply(builder);
-
-            return builder.ToString().ToLower();
-        }
-
-        public static InstantVector WithName(string name)
-        {
-            return new InstantVector(name);
-        }
-
-        /// <summary>
-        /// Returns the scalar s as a vector with no labels.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        public static InstantVector WithScalar(float value)
-        {
-            return Empty().AddFunction(VectorFunction.Create(value));
-        }
-
-        /// <summary>
-        /// Returns the number of seconds since January 1, 1970 UTC. Note that this does not actually return the current time, but the time at which the expression is to be evaluated.
-        /// </summary>
-        /// <returns></returns>
-        public static InstantVector WithTime()
-        {
-            return Empty().AddFunction(TimeFunction.Create());
-        }
-
         /// <summary>
         /// Returns an empty vector if the vector passed to it has any elements and a 1-element vector with the value 1 if the vector passed to it has no elements.
         /// </summary>
         /// <returns></returns>
         public InstantVector Absent()
         {
-            actions.Add(AbsentFunction.Create());
-            return this;
+            return AddAction(AbsentFunction.Create());
         }
 
         /// <summary>
@@ -75,20 +21,7 @@ namespace PromQL
         /// </summary>
         public InstantVector Absolute()
         {
-            actions.Add(AbsoluteFunction.Create());
-            return this;
-        }
-
-        public InstantVector AddFunction(IVectorAction action)
-        {
-            actions.Add(action);
-            return this;
-        }
-
-        public InstantVector AddOperator(IOperator @operator)
-        {
-            actions.Add(@operator);
-            return this;
+            return AddAction(AbsoluteFunction.Create());
         }
 
         /// <summary>
@@ -97,8 +30,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector BinaryLogarithm()
         {
-            actions.Add(BinaryLogarithmFunction.Create());
-            return this;
+            return AddAction(BinaryLogarithmFunction.Create());
         }
 
         /// <summary>
@@ -107,8 +39,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector Ceiling()
         {
-            actions.Add(CeilFunction.Create());
-            return this;
+            return AddAction(CeilFunction.Create());
         }
 
         /// <summary>
@@ -117,8 +48,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector ClampMax(float scalar)
         {
-            actions.Add(ClampMaxFunction.Create(scalar));
-            return this;
+            return AddAction(ClampMaxFunction.Create(scalar));
         }
 
         /// <summary>
@@ -127,8 +57,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector ClampMin(float scalar)
         {
-            actions.Add(ClampMinFunction.Create(scalar));
-            return this;
+            return AddAction(ClampMinFunction.Create(scalar));
         }
 
         /// <summary>
@@ -137,8 +66,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector DayOfMonth()
         {
-            actions.Add(DayOfMonthFunction.Create());
-            return this;
+            return AddAction(DayOfMonthFunction.Create());
         }
 
         /// <summary>
@@ -147,8 +75,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector DayOfWeek()
         {
-            actions.Add(DayOfWeekFunction.Create());
-            return this;
+            return AddAction(DayOfWeekFunction.Create());
         }
 
         /// <summary>
@@ -157,8 +84,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector DaysInMonth()
         {
-            actions.Add(DaysInMonthFunction.Create());
-            return this;
+            return AddAction(DaysInMonthFunction.Create());
         }
 
         /// <summary>
@@ -167,8 +93,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector DecimalLogarithm()
         {
-            actions.Add(DecimalLogarithmFunction.Create());
-            return this;
+            return AddAction(DecimalLogarithmFunction.Create());
         }
 
         /// <summary>
@@ -177,8 +102,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector Exponential()
         {
-            actions.Add(ExponentialFunction.Create());
-            return this;
+            return AddAction(ExponentialFunction.Create());
         }
 
         /// <summary>
@@ -187,8 +111,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector Floor()
         {
-            actions.Add(FloorFunction.Create());
-            return this;
+            return AddAction(FloorFunction.Create());
         }
 
         /// <summary>
@@ -197,8 +120,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector HistogramQuantile(float quantile)
         {
-            actions.Add(HistogramQuantileFunction.Create(quantile));
-            return this;
+            return AddAction(HistogramQuantileFunction.Create(quantile));
         }
 
         /// <summary>
@@ -207,8 +129,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector Hour()
         {
-            actions.Add(HourFunction.Create());
-            return this;
+            return AddAction(HourFunction.Create());
         }
 
         /// <summary>
@@ -223,8 +144,7 @@ namespace PromQL
             foreach (var label in sourceLabels)
                 function.AddLabel(label);
 
-            actions.Add(function);
-            return this;
+            return AddAction(function);
         }
 
         /// <summary>
@@ -233,8 +153,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector LabelReplace(string destinationLabel, string replacement, string sourceLabel, string regex)
         {
-            actions.Add(LabelReplaceFunction.Create(destinationLabel, replacement, sourceLabel, regex));
-            return this;
+            return AddAction(LabelReplaceFunction.Create(destinationLabel, replacement, sourceLabel, regex));
         }
 
         /// <summary>
@@ -243,8 +162,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector Minute()
         {
-            actions.Add(MinuteFunction.Create());
-            return this;
+            return AddAction(MinuteFunction.Create());
         }
 
         /// <summary>
@@ -253,8 +171,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector Month()
         {
-            actions.Add(MonthFunction.Create());
-            return this;
+            return AddAction(MonthFunction.Create());
         }
 
         /// <summary>
@@ -263,8 +180,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector NaturalLogarithm()
         {
-            actions.Add(NaturalLogarithmFunction.Create());
-            return this;
+            return AddAction(NaturalLogarithmFunction.Create());
         }
 
         /// <summary>
@@ -273,8 +189,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector Round(bool toNearest = true)
         {
-            actions.Add(RoundFunction.Create(toNearest));
-            return this;
+            return AddAction(RoundFunction.Create(toNearest));
         }
 
         /// <summary>
@@ -283,8 +198,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector Scalar()
         {
-            actions.Add(ScalarFunction.Create());
-            return this;
+            return AddAction(ScalarFunction.Create());
         }
 
         /// <summary>
@@ -293,8 +207,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector SortAscending()
         {
-            actions.Add(SortAscendingFunction.Create());
-            return this;
+            return AddAction(SortAscendingFunction.Create());
         }
 
         /// <summary>
@@ -303,8 +216,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector SortDescending()
         {
-            actions.Add(SortDescendingFunction.Create());
-            return this;
+            return AddAction(SortDescendingFunction.Create());
         }
 
         /// <summary>
@@ -313,8 +225,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector Sqrt()
         {
-            actions.Add(SqrtFunction.Create());
-            return this;
+            return AddAction(SqrtFunction.Create());
         }
 
         /// <summary>
@@ -323,8 +234,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector Sum()
         {
-            actions.Add(SumOperator.Create());
-            return this;
+            return AddAction(SumOperator.Create());
         }
 
         /// <summary>
@@ -334,8 +244,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector SumWithFilter(LabelFilter filter)
         {
-            actions.Add(SumOperator.Create().WithFilter(filter));
-            return this;
+            return AddAction(SumOperator.Create().WithFilter(filter));
         }
 
         /// <summary>
@@ -344,13 +253,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector Timestamp()
         {
-            actions.Add(TimestampFunction.Create());
-            return this;
-        }
-
-        public override string ToString()
-        {
-            return this;
+            return AddAction(TimestampFunction.Create());
         }
 
         /// <summary>
@@ -359,56 +262,7 @@ namespace PromQL
         /// <returns></returns>
         public InstantVector Year()
         {
-            actions.Add(YearFunction.Create());
-            return this;
+            return AddAction(YearFunction.Create());
         }
-
-        #region Hide System.Object inherited methods
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public static new bool Equals(object objA, object objB)
-        {
-            return object.Equals(objA, objB);
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public static new bool ReferenceEquals(object objA, object objB)
-        {
-            return object.ReferenceEquals(objA, objB);
-        }
-
-        /// <summary>
-        /// Determines whether the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>.
-        /// </summary>
-        /// <returns>
-        /// true if the specified <see cref="T:System.Object"/> is equal to the current <see cref="T:System.Object"/>; otherwise, false.
-        /// </returns>
-        /// <param name="obj">The <see cref="T:System.Object"/> to compare with the current <see cref="T:System.Object"/>. </param><filterpriority>2</filterpriority>
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object obj)
-        {
-            return base.Equals(obj);
-        }
-
-        /// <summary>
-        /// Serves as a hash function for a particular type.
-        /// </summary>
-        /// <returns>
-        /// A hash code for the current <see cref="T:System.Object"/>.
-        /// </returns>
-        /// <filterpriority>2</filterpriority>
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Type GetType()
-        {
-            return base.GetType();
-        }
-
-        #endregion Hide System.Object inherited methods
     }
 }

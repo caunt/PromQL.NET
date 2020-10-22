@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Range.Aggregations
 {
-    public class MaxOverTimeFunction : BaseOverTimeFunction
+    internal class MaxOverTimeFunction : BaseOverTimeFunction
     {
         private MaxOverTimeFunction() : base("max")
         {

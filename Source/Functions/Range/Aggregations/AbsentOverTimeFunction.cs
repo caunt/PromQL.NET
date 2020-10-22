@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Range.Aggregations
 {
-    public class AbsentOverTimeFunction : BaseOverTimeFunction
+    internal class AbsentOverTimeFunction : BaseOverTimeFunction
     {
         private AbsentOverTimeFunction() : base("absent")
         {

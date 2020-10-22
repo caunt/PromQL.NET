@@ -34,7 +34,7 @@
       net472;
       net48;
     </TargetFrameworks>
-    <Version>0.2</Version>
+    <Version>0.3</Version>
     <AddSyntheticProjectReferencesForSolutionDependencies>false</AddSyntheticProjectReferencesForSolutionDependencies>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>

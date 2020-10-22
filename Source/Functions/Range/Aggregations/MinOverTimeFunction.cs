@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Range.Aggregations
 {
-    public class MinOverTimeFunction : BaseOverTimeFunction
+    internal class MinOverTimeFunction : BaseOverTimeFunction
     {
         private MinOverTimeFunction() : base("min")
         {

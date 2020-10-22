@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Range.Aggregations
 {
-    public class SumOverTimeFunction : BaseOverTimeFunction
+    internal class SumOverTimeFunction : BaseOverTimeFunction
     {
         private SumOverTimeFunction() : base("sum")
         {

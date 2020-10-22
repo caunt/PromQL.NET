@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Range
 {
-    public class InstantDeltaFunction : BaseFunction<InstantDeltaFunction>
+    internal class InstantDeltaFunction : BaseFunction<InstantDeltaFunction>
     {
         private InstantDeltaFunction() : base("idelta")
         {

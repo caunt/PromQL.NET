@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Range
 {
-    public class RateFunction : BaseFunction<RateFunction>
+    internal class RateFunction : BaseFunction<RateFunction>
     {
         private RateFunction() : base("rate")
         {

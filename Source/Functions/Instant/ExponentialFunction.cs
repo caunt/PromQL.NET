@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Instant
 {
-    public class ExponentialFunction : BaseFunction<AbsoluteFunction>
+    internal class ExponentialFunction : BaseFunction<AbsoluteFunction>
     {
         private ExponentialFunction() : base("exp")
         {

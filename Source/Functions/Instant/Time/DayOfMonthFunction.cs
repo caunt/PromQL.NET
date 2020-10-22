@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Instant.Time
 {
-    public class DayOfMonthFunction : BaseFunction<AbsentFunction>
+    internal class DayOfMonthFunction : BaseFunction<AbsentFunction>
     {
         private DayOfMonthFunction() : base("day_of_month")
         {

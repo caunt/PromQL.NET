@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Instant
 {
-    public class CeilFunction : BaseFunction<CeilFunction>
+    internal class CeilFunction : BaseFunction<CeilFunction>
     {
         private CeilFunction() : base("ceil")
         {

@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Range
 {
-    public class ResetsFunction : BaseFunction<ResetsFunction>
+    internal class ResetsFunction : BaseFunction<ResetsFunction>
     {
         private ResetsFunction() : base("resets")
         {

@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Instant.Time
 {
-    public class YearFunction : BaseFunction<YearFunction>
+    internal class YearFunction : BaseFunction<YearFunction>
     {
         private YearFunction() : base("year")
         {

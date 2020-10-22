@@ -2,7 +2,7 @@
 
 namespace PromQL.Functions.Instant
 {
-    public class RoundFunction : BaseFunction<RoundFunction>
+    internal class RoundFunction : BaseFunction<RoundFunction>
     {
         private RoundFunction() : base("round")
         {

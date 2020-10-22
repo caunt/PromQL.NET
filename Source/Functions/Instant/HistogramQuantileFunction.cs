@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Instant
 {
-    public class HistogramQuantileFunction : BaseFunction<HistogramQuantileFunction>
+    internal class HistogramQuantileFunction : BaseFunction<HistogramQuantileFunction>
     {
         private HistogramQuantileFunction() : base("histogram_quantile")
         {

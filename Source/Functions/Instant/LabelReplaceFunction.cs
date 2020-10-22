@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Instant
 {
-    public class LabelReplaceFunction : BaseFunction<LabelReplaceFunction>
+    internal class LabelReplaceFunction : BaseFunction<LabelReplaceFunction>
     {
         private LabelReplaceFunction() : base("label_replace")
         {

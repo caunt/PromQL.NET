@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Range
 {
-    public class PredictLinearFunction : BaseFunction<PredictLinearFunction>
+    internal class PredictLinearFunction : BaseFunction<PredictLinearFunction>
     {
         private PredictLinearFunction() : base("predict_linear")
         {

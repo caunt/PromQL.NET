@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Instant.Time
 {
-    public class MinuteFunction : BaseFunction<AbsentFunction>
+    internal class MinuteFunction : BaseFunction<AbsentFunction>
     {
         private MinuteFunction() : base("minute")
         {

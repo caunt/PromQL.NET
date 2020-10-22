@@ -1,6 +1,6 @@
-﻿using PromQL;
+﻿using System;
+using PromQL.Vectors;
 using PromQL.Operators.Filters;
-using System;
 
 namespace Basic_Usage
 {
@@ -15,7 +15,7 @@ namespace Basic_Usage
             // Example #1:
             // Create InstantVector and apply "sum" aggregation operator on it: https://prometheus.io/docs/prometheus/latest/querying/operators/#aggregation-operators
             var query = InstantVector
-                .WithName("http_requests_total")
+                .WithString("http_requests_total")
                 .Sum();
 
             Console.WriteLine($"sum http_requests_total:\n\t{query}\n");
@@ -23,7 +23,7 @@ namespace Basic_Usage
             // Example #2:
             // For now were using RangeVector instead of InstantVector, selecting http requests count per instance, and sorting it in descending order
             query = RangeVector
-                .Create("http_requests_total", duration: 15, unit: 'm')
+                .WithString("http_requests_total", duration: 15, unit: 'm')
                 .SumOverTime()      // Same "sum" aggregation operator as in InstantVector, but applies to RangeVector and returns as result InstantVector (!) instead of RangeVector
                 .SumWithFilter(     // you shouldn't worry about types verification after applying operators and functions because IntelliSense wont give you wrong hints
                     LabelFilter.Create()
@@ -34,7 +34,6 @@ namespace Basic_Usage
             Console.WriteLine($"sum http_requests_total of 15 minutes:\n\t{query}");
 
             // As you can see in Example #2 PromQL.NET will preserve right hints about accessible methods on your aggregated data
-            // our goal is to make everything works as expected, and prevent wrong syntax in generated queries
         }
     }
 }

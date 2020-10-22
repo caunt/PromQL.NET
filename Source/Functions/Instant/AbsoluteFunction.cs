@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Instant
 {
-    public class AbsoluteFunction : BaseFunction<AbsoluteFunction>
+    internal class AbsoluteFunction : BaseFunction<AbsoluteFunction>
     {
         private AbsoluteFunction() : base("abs")
         {

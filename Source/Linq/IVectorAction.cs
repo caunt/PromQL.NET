@@ -1,8 +1,8 @@
 ﻿using System.Text;
 
-namespace PromQL
+namespace PromQL.Linq
 {
-    public interface IVectorAction
+    internal interface IVectorAction
     {
         void Apply(StringBuilder builder);
     }

@@ -1,6 +1,6 @@
 ﻿namespace PromQL.Functions.Instant
 {
-    public class TimestampFunction : BaseFunction<TimestampFunction>
+    internal class TimestampFunction : BaseFunction<TimestampFunction>
     {
         private TimestampFunction() : base("timestamp")
         {
