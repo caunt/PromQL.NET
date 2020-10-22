@@ -21,7 +21,7 @@ Console.WriteLine(query);
 For now were using RangeVector instead of InstantVector, selecting http requests count per instance, and sorting it in descending order:
 ```csharp
 var query = RangeVector
-    .WithString("http_requests_total", duration: 15, unit: 'm')
+    .WithString("http_requests_total", TimeSpan.FromSeconds(15))
     .SumOverTime()  // Same "sum" aggregation operator as in InstantVector, but applies to RangeVector and returns as result InstantVector (!) instead of RangeVector
     .SumWithFilter(
         LabelFilter.Create()
@@ -30,7 +30,7 @@ var query = RangeVector
     .SortDescending();
 
 Console.WriteLine(query);
-// OUTPUT: sort_desc(sum by (instance) (sum_over_time(http_requests_total[15m])))
+// OUTPUT: sort_desc(sum by (instance) (sum_over_time(http_requests_total[15s])))
 ```
 
 Our goal is to make everything to work as expected and prevent wrong syntax in generated prometheus queries.
